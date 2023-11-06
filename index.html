@@ -1,0 +1,138 @@
+<html>
+<head>
+    <title>Recetas deliciosas</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Cuando el usuario hace scroll hacia abajo desde la parte superior de la página, se muestra el botón
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("myBtn").style.display = "block";
+          } else {
+            document.getElementById("myBtn").style.display = "none";
+          }
+        }
+        
+        // Cuando el usuario hace clic en el botón, se va al inicio de la página
+        function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }
+        </script>
+        
+</head>
+<body>
+    <button onclick="topFunction()" id="myBtn" title="Volver arriba">Volver arriba</button>
+
+    <header>
+		<div class="container">
+			<h1 >Recetas deliciosas</h1>
+			<nav>
+				<ul>
+					<li><a href="add.html">Mi libro de recetas</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+    <main>
+    <div class="container">
+        <h1>Recetas deliciosas</h1>
+        <p>Bienvenido a mi página de recetas, donde encontrarás platos sabrosos y fáciles de preparar.</p>
+        <div class="menu">
+            <ul>
+                <li><a href="#ensalada">Ensalada de aguacate y queso</a></li>
+                <li><a href="#sopa">Sopa de tomate y albahaca</a></li>
+                <li><a href="#pizza">Pizza casera de pepperoni</a></li>
+                <li><a href="#postre">Postre de chocolate y frutos rojos</a></li>
+            </ul>
+        </div>
+        <div class="recetas">
+            <section>
+            <div id="ensalada" class="receta">
+                <h2>Ensalada de aguacate y queso</h2>
+                <img src="ensalada.jpg" alt="Ensalada de aguacate y queso">
+                <p>Esta ensalada es fresca, nutritiva y muy fácil de hacer. Solo necesitas los siguientes ingredientes:</p>
+                <ul>
+                    <li>Lechuga</li>
+                    <li>Aguacate</li>
+                    <li>Queso fresco</li>
+                    <li>Tomates cherry</li>
+                    <li>Aceite de oliva</li>
+                    <li>Sal y pimienta</li>
+                </ul>
+                <p>Para prepararla, solo tienes que lavar y cortar la lechuga, el aguacate, el queso y los tomates. Luego, mezcla todo en un bol y aliña con aceite, sal y pimienta al gusto. ¡Y ya está! Disfruta de esta deliciosa ensalada como entrante o como plato principal.</p>
+            </div>
+        </section>
+
+        <section>
+            <div id="sopa" class="receta">
+                <h2>Sopa de tomate y albahaca</h2>
+                <img src="sopa.jpg" alt="Sopa de tomate y albahaca">
+                <p>Esta sopa es caliente, cremosa y muy aromática. Solo necesitas los siguientes ingredientes:</p>
+                <ul>
+                    <li>Tomates maduros</li>
+                    <li>Cebolla</li>
+                    <li>Ajo</li>
+                    <li>Caldo de verduras</li>
+                    <li>Nata líquida</li>
+                    <li>Albahaca fresca</li>
+                    <li>Aceite de oliva</li>
+                    <li>Sal y pimienta</li>
+                </ul>
+                <p>Para prepararla, solo tienes que pelar y picar la cebolla y el ajo. Luego, sofríelos en una olla con un poco de aceite. Añade los tomates lavados y troceados y el caldo de verduras. Deja que hierva a fuego medio durante unos 20 minutos. Tritura la sopa con una batidora hasta que quede suave. Añade la nata, la sal y la pimienta al gusto. Sirve la sopa caliente con unas hojas de albahaca por encima. ¡Y ya está! Disfruta de esta deliciosa sopa como primer plato o como cena ligera.</p>
+            </div>
+        </section>
+
+        <section>
+            <div id="pizza" class="receta">
+                <h2>Pizza casera de pepperoni</h2>
+                <img src="pizza.jpg" alt="Pizza casera de pepperoni">
+                <p>Esta pizza es crujiente, jugosa y muy sabrosa. Solo necesitas los siguientes ingredientes:</p>
+                <ul>
+                    <li>Masa de pizza</li>
+                    <li>Salsa de tomate</li>
+                    <li>Queso mozzarella</li>
+                    <li>Pepperoni</li>
+                    <li>Orégano</li>
+                </ul>
+                <p>Para prepararla, solo tienes que extender la masa de pizza sobre una bandeja de horno. Luego, cubre la masa con salsa de tomate, queso mozzarella rallado y pepperoni en rodajas. Espolvorea un poco de orégano por encima. Hornea la pizza en el horno precalentado a 180ºC durante unos 15 minutos o hasta que el queso se derrita y la masa se dore. ¡Y ya está! Disfruta de esta deliciosa pizza como plato principal o como aperitivo.</p>
+            </div>
+        </section>
+
+        <section>
+            <div id="postre" class="receta">
+                <h2>Postre de chocolate y frutos rojos</h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/j9R-ytiPnUI?si=fm5i5JUHkennILMp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <p>Este postre es dulce, cremoso y muy refrescante. Solo necesitas los siguientes ingredientes:</p>
+                <ul>
+                    <li>Chocolate negro</li>
+                    <li>Nata montada</li>
+                    <li>Frutos rojos (fresas, frambuesas, arándanos, etc.)</li>
+                    <li>Menta fresca</li>
+                </ul>
+                <p>Para prepararlo, solo tienes que derretir el chocolate negro al baño maría o en el microondas. Luego, deja que se enfríe un poco. En un vaso o un bol, pon una capa de nata montada, otra de chocolate derretido y otra de frutos rojos lavados y cortados. Repite las capas hasta llenar el vaso o el bol. Decora con unas hojas de menta por encima. ¡Y ya está! Disfruta de este delicioso postre como colofón a una buena comida.</p>
+            </div>
+        </section>
+    
+        </div>
+    </div>
+</main>
+<footer>
+    <div class="container">
+        <p>&copy; 2023 Recetas deliciosas. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+
+</html>
+
+<!-- 
+referencias:
+
+Cocina Delirante. (2019). Sopa de lima. Recuperado de: https://www.cocinadelirante.com/sopa/recetas-de-sopas-guisos-y-ensaladas
+
+Cocina Delirante. (2019). Ensalada de pollo y col. Recuperado de: https://www.cocinadelirante.com/sopa/recetas-de-sopas-guisos-y-ensaladas
+
+Unareceta (2020).Pizza de peperoni. Recuperado de: https://unareceta.com/pizza-pepperoni/ -->

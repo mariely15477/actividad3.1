@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mi libro de recetas</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+		}
+		h1 {
+			text-align: center;
+			margin-top: 0;
+		}
+		form {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin-bottom: 20px;
+		}
+		form input[type="text"], form textarea {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 10px;
+			border: none;
+			border-radius: 5px;
+			box-shadow: 0 0 5px rgba(0,0,0,0.1);
+		}
+		form input[type="submit"] {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.receta {
+			background-color: #fff;
+			padding: 20px;
+			margin-bottom: 20px;
+			box-shadow: 0 0 5px rgba(0,0,0,0.1);
+		}
+		.receta h2 {
+			margin-top: 0;
+		}
+		.receta p {
+			margin: 0;
+		}
+		.receta .delete {
+			color: red;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Mi libro de recetas</h1>
+		<form id="receta-form">
+			<div>
+				<label for="nombre">nombre:</label>
+				<input type="text" id="nombre" nombre="nombre" required>
+			</div>
+			<div>
+				<label for="descripcion">descripcion:</label>
+				<textarea id="descripcion" nombre="descripcion" required></textarea>
+			</div>
+			<div>
+				<label for="ingredientes">ingredientes:</label>
+				<textarea id="ingredientes" nombre="ingredientes" required></textarea>
+			</div>
+			<div>
+				<label for="instrucciones">instrucciones:</label>
+				<textarea id="instrucciones" nombre="instrucciones" required></textarea>
+			</div>
+			<input type="submit" value="Agregar receta" onclick="showConfirmation()">
+		</form>
+		<div id="recetas"></div>
+	</div>
+	<script>
+		// Cargar recetas guardadas desde localStorage
+		let recetas = JSON.parse(localStorage.getItem('recetas')) || [];
+
+		// visualizar recetas guardadas
+		function displayrecetas() {
+			let recetaList = document.getElementById('recetas');
+			recetaList.innerHTML = '';
+			recetas.forEach(function(receta, index) {
+				let recetaDiv = document.createElement('div');
+				recetaDiv.classList.add('receta');
+				recetaDiv.innerHTML = `
+					<h2>${receta.nombre} <span class="delete" onclick="deletereceta(${index})">X</span></h2>
+					<p>${receta.descripcion}</p>
+					<h3>ingredientes:</h3>
+					<p>${receta.ingredientes}</p>
+					<h3>instrucciones:</h3>
+					<p>${receta.instrucciones}</p>
+				`;
+				recetaList.appendChild(recetaDiv);
+			});
+		}
+
+		// Agregar nueva receta
+		function addreceta(event) {
+			event.preventDefault();
+			let nombre = document.getElementById('nombre').value;
+			let descripcion = document.getElementById('descripcion').value;
+			let ingredientes = document.getElementById('ingredientes').value;
+			let instrucciones = document.getElementById('instrucciones').value;
+			let receta = {
+				nombre: nombre,
+				descripcion: descripcion,
+				ingredientes: ingredientes,
+				instrucciones: instrucciones
+			};
+			recetas.push(receta);
+			localStorage.setItem('recetas', JSON.stringify(recetas));
+			displayrecetas();
+			document.getElementById('nombre').value = '';
+			document.getElementById('descripcion').value = '';
+			document.getElementById('ingredientes').value = '';
+			document.getElementById('instrucciones').value = '';
+		}
+
+		// Eliminar receta
+		function deletereceta(index) {
+			recetas.splice(index, 1);
+			localStorage.setItem('recetas', JSON.stringify(recetas));
+			displayrecetas();
+		}
+
+		// Event listeners
+		document.getElementById('nombre').onchange = function() {
+			this.value = this.value.trim();
+		};
+		document.getElementById('descripcion').onchange = function() {
+			this.value = this.value.trim();
+		};
+		document.getElementById('ingredientes').onchange = function() {
+			this.value = this.value.trim();
+		};
+		document.getElementById('instrucciones').onchange = function() {
+			this.value = this.value.trim();
+		};
+		document.getElementById('nombre').onkeyup = function() {
+			this.value = this.value.charAt(0).toUpperCase() + this.value.slice(1);
+		};
+		document.getElementById('descripcion').onkeyup = function() {
+			this.value = this.value.charAt(0).toUpperCase() + this.value.slice(1);
+		};
+		document.getElementById('ingredientes').onkeyup = function() {
+			this.value = this.value.charAt(0).toUpperCase() + this.value.slice(1);
+		};
+		document.getElementById('instrucciones').onkeyup = function() {
+			this.value = this.value.charAt(0).toUpperCase() + this.value.slice(1);
+		};
+		document.querySelector('form').addEventListener('submit', addreceta);
+
+		// Visualización inicial de recetas
+		displayrecetas();
+
+		function showConfirmation() {
+  alert("Receta guardada con éxito");
+}
+	</script>
+</body>
+</html>
